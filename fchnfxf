@@ -1,0 +1,85 @@
+#include <iostream>
+using namespace std;
+
+int* doit(int x, int y, int N, int c){
+      static int* arr = new int[3];
+      while(x == N or y != N){
+          x = x - 1;
+          y = y + 1;
+      }
+
+      c = c + 1;
+    arr[0] = x;
+    arr[1] = y;
+    arr[2] = c;
+    cout<<"yee"<<"\n";
+    return arr;
+
+
+}
+
+
+
+
+int main() {
+    int t;
+    int N, K, x, y;
+    cin >> t;
+    int* arr = new int[2];
+    
+
+    for(int i = 0; i < t; i++){
+        cin >> N >> K >>x >> y;
+        
+
+        
+
+        arr[0] = x; arr[1] = y;
+        int c = 0;
+        while(c != K){
+            if(x == N && y == N){
+                
+                x = x - 1;
+                y = y - 1;
+                c = c + 1;
+    
+            }
+            
+        
+        x = x + 1;
+        y = y + 1;
+
+
+        if(x == N and c < K and y != N){
+             c = c + 1;
+     
+                int* a = doit(x, y, N, c);
+
+                x = a[0];
+                y = a[1];
+                c = a[2];
+     
+          }
+
+
+
+        if(y == N and c  K and x != N){
+            c = c + 1;
+     
+                int* a = doit(y, x, N, c);
+
+                y = a[0];
+                x = a[1];
+                c = a[2];
+
+        }
+       
+            
+        }
+        arr[0] = x;
+        arr[1] = y;
+         cout << arr[0] << " " << arr[1] << "\n";
+    }
+    
+    return 0;
+}
